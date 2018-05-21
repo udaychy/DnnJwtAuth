@@ -8,11 +8,33 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-item>
+    <ion-avatar>
+      <img *ngIf="user.Photo" src={{user.Photo}}>
+      <img *ngIf="!user.Photo" src="assets/imgs/no_image.png">
+    </ion-avatar>
+    <h2>{{user.DisplayName}}</h2>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-5>First Name</ion-col>
+      <ion-col col-7>{{user.FirstName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Last Name</ion-col>
+      <ion-col col-7>{{user.LastName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Display Name</ion-col>
+      <ion-col col-7>{{user.DisplayName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Email</ion-col>
+      <ion-col col-7>{{user.Email}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Roles </ion-col>
+      <ion-col col-7>{{user.Roles}}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
