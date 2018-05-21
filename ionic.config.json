@@ -1,6 +1,6 @@
 {
   "name": "DnnJwtAuth",
-  "app_id": "",
+  "app_id": "fcf03ef8",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
