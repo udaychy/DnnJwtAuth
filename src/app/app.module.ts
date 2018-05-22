@@ -5,19 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpClient } from '@angular/common/http';
+import { LoginPage } from '../pages/login/login';
+import { CommonProvider } from '../providers/common/common';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
-  ],
+    LoginPage
+    ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -27,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -35,6 +36,7 @@ import { HttpClient } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
     AuthProvider,
+    CommonProvider,
   ]
 })
 export class AppModule {}

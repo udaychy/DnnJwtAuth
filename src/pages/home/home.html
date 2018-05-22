@@ -7,34 +7,33 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-avatar>
-      <img *ngIf="user.Photo" src={{user.Photo}}>
-      <img *ngIf="!user.Photo" src="assets/imgs/no_image.png">
-    </ion-avatar>
-    <h2>{{user.DisplayName}}</h2>
-  </ion-item>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-5>First Name</ion-col>
-      <ion-col col-7>{{user.FirstName}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-5>Last Name</ion-col>
-      <ion-col col-7>{{user.LastName}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-5>Display Name</ion-col>
-      <ion-col col-7>{{user.DisplayName}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-5>Email</ion-col>
-      <ion-col col-7>{{user.Email}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-5>Roles </ion-col>
-      <ion-col col-7>{{user.Roles}}</ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content padding class="home-content">
+  <ion-list no-border>
+
+      <ion-item>
+        <ion-avatar item-start>
+          <img *ngIf="user.Photo" src={{user.Photo}}>
+          <img *ngIf="!user.Photo" src="assets/imgs/no_image.png">
+        </ion-avatar>
+        <h2>{{user.DisplayName}}</h2>
+      </ion-item>
+    <ion-item>
+      <ion-icon name='person' item-start></ion-icon>
+      {{user.FirstName}} {{user.LastName}}
+      <ion-note item-end>name</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-icon name='mail' item-start></ion-icon>
+      {{user.Email}}
+      <ion-note item-end>email</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='people' item-start></ion-icon>
+      {{user.Roles}}
+      <ion-note item-end>roles</ion-note>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button clear full (click)="logOut()">LOG OUT</button>
 </ion-content>
