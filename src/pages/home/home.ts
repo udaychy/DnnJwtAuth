@@ -29,8 +29,8 @@ export class HomePage {
   getUser(userId:number){
     this.authService.getUser(userId).subscribe(user => {
       console.log(user);
-      user.Photo = user.Photo && `http://mydnn.me${user.Photo}`;
-      this.user = user;
+      this.user = new UserModel(user);
+      console.log('user model', this.user);
     })
   }
 

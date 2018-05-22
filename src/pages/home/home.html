@@ -7,13 +7,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="home-content">
+<ion-content padding class="home-content" >
   <ion-list no-border>
-
       <ion-item>
         <ion-avatar item-start>
           <img *ngIf="user.Photo" src={{user.Photo}}>
-          <img *ngIf="!user.Photo" src="assets/imgs/no_image.png">
         </ion-avatar>
         <h2>{{user.DisplayName}}</h2>
       </ion-item>

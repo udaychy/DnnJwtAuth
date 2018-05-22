@@ -2,17 +2,13 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEvent } from '@angular/common/
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../../model/login-response';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
 import { UserModel } from '../../model/user-model';
+import { ApiControllersUrls, ApiAuthActions, ApiUserActions } from '../../environments/environment';
 
 @Injectable()
 export class AuthProvider {
 
   private accessToken:string;
-  // Provided by the JWT AUth handler
-  private readonly JWT_API = 'http://mydnn.me/DesktopModules/JwtAuth/API/mobile/';
-  // My Custom DNN Web API end point
-  private readonly USER_API = 'http://mydnn.me/DesktopModules/DnnWebApi/API/User/';
   
   constructor(public http: HttpClient) {
     console.log('Hello AuthProvider Provider');
@@ -23,7 +19,7 @@ export class AuthProvider {
       u: userName,
       p: password
     };
-    var $login = this.http.post<LoginResponse>(`${this.JWT_API}login`, data);
+    var $login = this.http.post<LoginResponse>(`${ApiControllersUrls.Auth}${ApiAuthActions.login}`, data);
     return $login.toPromise().then(auth => {
       console.log('Login: ', auth);
       this.accessToken = auth.accessToken;
@@ -34,7 +30,7 @@ export class AuthProvider {
   }
 
   logOut() {
-    return this.http.get(`${this.JWT_API}logout` ,this.getJwtRequestOption())
+    return this.http.get(`${ApiControllersUrls.Auth}${ApiAuthActions.logout}` ,this.getJwtRequestOption())
   }
 
   isLoggedIn(): boolean {
@@ -42,7 +38,8 @@ export class AuthProvider {
   }
 
   getUser(userId: number){
-    return this.http.get<UserModel>(`${this.USER_API}GetUser?userId=${userId}`,this.getJwtRequestOption())
+    return this.http.get<UserModel>(`${ApiControllersUrls.User}${ApiUserActions.getUser}?userId=${userId}`,
+    this.getJwtRequestOption());
   }
 
   // why i changed the return type to object
