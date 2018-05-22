@@ -9,6 +9,7 @@
 log.txt
 *.sublime-project
 *.sublime-workspace
+*.dll
 .vscode/
 npm-debug.log*
 
@@ -29,8 +30,11 @@ plugins/android.json
 plugins/ios.json
 www/
 $RECYCLE.BIN/
+DnnWebApi/DnnWebApi/bin
+DnnWebApi/DnnWebApi/obj
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
 .editorconfig
+DnnWebApi/DnnWebApi.v12.suo
