@@ -37,7 +37,7 @@ export class HomePage {
   logOut(){
     this.authService.logOut().subscribe(() => {
       this.navCtrl.setRoot(LoginPage);
-      this.commonService.presentToaster("Successfully Logged Out");
+      this.commonService.presentToaster(this.commonService.toasterMsg.logoutSuccess);
     })
   }
 

@@ -7,15 +7,25 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 @Injectable()
 export class CommonProvider {
 
-  private readonly DEFAULT_LOADER_CONTENT = "Loading";
   private readonly TOASTER_DURATION = 4000;
   private readonly TOASTER_POSITION = "bottom";
+
+  public readonly toasterMsg = {
+    loginSuccess : "Successfully Logged In",
+    logoutSuccess : "Successfully Logged Out",
+    loginFailed : "Login Failed",
+    loginFormRequired: "Please provide both User Name and Password"
+  }
+  public readonly loaderMsg = {
+    loading: "Loading...",
+    login: "Logging In..."
+  }
 
   constructor(
     private loadingCtrl: LoadingController,
     private toaster: ToastController) { }
 
-  displayLoader(content: string = this.DEFAULT_LOADER_CONTENT) {
+  displayLoader(content: string = this.loaderMsg.loading) {
     let loading = this.loadingCtrl.create({
       content: content
     });

@@ -11,7 +11,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 })
 export class LoginPage {
   private loginForm: FormGroup
-
+  
   constructor(public navCtrl: NavController,
     private authService: AuthProvider,
     private commonService: CommonProvider,
@@ -26,23 +26,23 @@ export class LoginPage {
     console.log(this.loginForm.value)
 
     if (!this.loginForm.value.userName || !this.loginForm.value.password) {
-      this.commonService.presentToaster("Please provide both username and password");
+      this.commonService.presentToaster(this.commonService.toasterMsg.loginFormRequired);
       return;
     }
 
-    this.commonService.displayLoader("Logging In...").then(loader => {
+    this.commonService.displayLoader(this.commonService.loaderMsg.login).then(loader => {
       this.authService.login(this.loginForm.value.userName, this.loginForm.value.password).then(authData => {
         loader.dismiss();
         if(authData.userId > 0){
-          this.commonService.presentToaster("Successfully Logged In");
+          this.commonService.presentToaster(this.commonService.toasterMsg.loginSuccess);
           this.setHomeAsRoot(authData.userId);
         }else{
-          this.commonService.presentToaster("Login Failed");
+          this.commonService.presentToaster(this.commonService.toasterMsg.loginFailed);
           this.loginForm.controls['password'].reset();
         }
       }).catch(rej => {
         loader.dismiss();
-        this.commonService.presentToaster("Login Failed");
+        this.commonService.presentToaster(this.commonService.toasterMsg.loginFailed);
         this.loginForm.controls['password'].reset();
         console.log(rej);
       })
