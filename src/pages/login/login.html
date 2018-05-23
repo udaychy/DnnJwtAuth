@@ -9,20 +9,19 @@
 
 <ion-content padding class="login-content">
   <h3 text-center class="header">Login with DNN JWT</h3>
-  <ion-list inset>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="userName"></ion-input>
+      <ion-input type="text" formControlName="userName"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
 
-  </ion-list>
-
-  <div padding>
-    <button ion-button primary full (click)="login()">LOGIN</button>
-  </div>
+    <div padding>
+      <button type="submit" ion-button primary full [disabled]="!loginForm.valid">LOGIN</button>
+    </div>
+  </form>
 </ion-content>
